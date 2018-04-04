@@ -1,0 +1,46 @@
+<html>
+    <head lang="en">
+		<meta charset="utf-8">
+		<title>Home</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+        <body>
+			<div class="header">
+				<h2>Introduction and rules: </h2>
+			</div>
+			<div class="introduction">
+			<p>Purpose of the game is to type the words You see on the screen as fast as possible. For calculating Your score, the average speed of typeing letters per minute is multiplied with the time You have been playing so for the best score You need to stay in the game as long as possible and also write as fast as possible. If You see the screen flash black for a second, You have made a mistake. 5 mistakes are allowed. GOOD LUCK!
+			</p>
+			</div>
+			<form method="POST">
+			  <div class="input-group">
+				  <label>Kasutajanimi:</label>
+				  <input id="name" type="text" />
+				  <input type="button" value="Start" onclick="location.href='index.html'">
+				  <input type="button" value="Save" onclick="insert()" />
+				  <input type="button" value="Show data" onclick="show()" />
+			</form>
+			<div id="display"></div>
+		
+		<script>
+			var names = [];
+			var nameInput = document.getElementById("name");
+			var messageBox  = document.getElementById("display");
+			
+			function insert ( ) {
+			 names.push( nameInput.value );
+			 clearAndShow();
+			}
+			
+			function clearAndShow () {
+			  nameInput.value = "";
+			  messageBox.innerHTML = "";
+			  messageBox.innerHTML += "Names: " + names.join(",") + "<br/>";
+			}	
+		</script>
+		<div class="footer">
+			<p>Töö autorid: Maritana Sampu, Katri Palo, Kaidi-Liis Liim</p>
+		</div>
+       </body>
+
+</html>
