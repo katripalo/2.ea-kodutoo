@@ -1,7 +1,8 @@
-*{
+* {
 	margin: 0px;
 	padding: 0px;
 }
+
 body {
 	font-size: 120%;
 	background: #F8F8FF;
@@ -19,6 +20,7 @@ body {
 	border-radius: 10px 10px 0px 0px;
 	padding: 20px;
 }
+
 .introduction {
 	width: 40%;
 	margin: 0px auto 0px;
@@ -26,9 +28,10 @@ body {
 	text-align: center;
 	border: 1px solid #B0C4DE;
 	padding: 20px;
-
 }
-form, .content {
+
+form,
+.content {
 	width: 40%;
 	margin: 0px auto;
 	padding: 20px;
@@ -37,12 +40,13 @@ form, .content {
 	background: white;
 	border-radius: 0px 0px 10px 10px;
 }
+
 .input-group label {
 	display: block;
 	text-align: left;
 	margin: 3px;
-
 }
+
 .input-group input {
 	height: 50px;
 	width: 40%;
@@ -50,11 +54,12 @@ form, .content {
 	border-radius: 5px;
 	border: 1px solid #B0C4DE;
 }
+
 .footer {
-   position: fixed;
-   left: 0;
-   bottom: 70;
-   width: 100%;
-   color: grey;
-   text-align: center;
+	position: fixed;
+	left: 0;
+	bottom: 70;
+	width: 100%;
+	color: grey;
+	text-align: center;
 }
