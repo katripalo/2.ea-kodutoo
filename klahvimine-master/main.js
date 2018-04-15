@@ -1,14 +1,21 @@
-var names = [];
-var nameInput = document.getElementById("name");
-var messageBox = document.getElementById("display");
+window.onload = function () {
 
-function insert() {
-    names.push(nameInput.value);
-    clearAndShow();
-}
+    const nameInput = document.getElementById("name");
+    const startButton = document.getElementById("start-button");
 
-function clearAndShow() {
-    nameInput.value = "";
-    messageBox.innerHTML = "";
-    messageBox.innerHTML += "Names: " + names.join(",") + "<br/>";
+    startButton.addEventListener("click", function () {
+        const nameInputValue = nameInput.value;
+
+        if (nameInputValue !== '') {
+            localStorage.setItem("name", nameInput.value);
+            document.location.href = "index.html";
+        } else {
+            nameInput.focus();
+            nameInput.style.background = 'rgba(255, 0, 0, 0.5)';
+            setTimeout(function () {
+                nameInput.style.background = '';
+              }, 1000);
+        }
+    });
+
 }

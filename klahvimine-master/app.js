@@ -113,9 +113,26 @@ TYPER.prototype = {
       this.timeDiff = ((this.timeGuessed - this.timeGenerated) / 1000) / 60;
       this.lettersPerMinute = this.allGeneratedLetters / this.timeDiff;
       this.average = Math.round(this.lettersPerMinute);
+
       updateDocument(this.average, this.score, this.speed);
       blinkit()
+
       if (this.mistakesMade >= 5) {
+        let prevLocalStorageResultsString = localStorage.getItem("results");
+        let playerName = localStorage.getItem("name");
+        let player = { name: playerName, score: this.score }
+        let resultsArray;
+
+        if (prevLocalStorageResultsString !== null) {
+          resultsArray = JSON.parse(prevLocalStorageResultsString);
+        } else {
+          resultsArray = [];
+        }
+        
+        resultsArray.push(player);
+        resultsString = JSON.stringify(resultsArray);
+        localStorage.setItem("results", resultsString);
+
         window.location.href = "scoreboard.html";
       }
 

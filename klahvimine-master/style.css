@@ -67,6 +67,10 @@ form,
 	box-sizing: border-box;
 }
 
+form #name {
+	transition: background 0.3s ease-in-out;
+}
+
 .footer {
 	position: fixed;
 	left: 0;
