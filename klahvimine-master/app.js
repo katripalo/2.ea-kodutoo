@@ -176,12 +176,19 @@ function updateDocument(average, score, timeGenerated) {
 }
 
 function blinkit(){
-	intrvl=0;
+  const body = document.getElementsByTagName("BODY")[0];
+  let intrvl = 0;
+
 	for(nTimes=0;nTimes<1;nTimes++){
 		intrvl += 10;
-		setTimeout("document.bgColor='black';",intrvl);
+		setTimeout(function () {
+      body.style.background='black';
+    }, intrvl);
+
 		intrvl += 100;
-		setTimeout("document.bgColor='#FFFFFF';",intrvl);
+		setTimeout(function () {
+      body.style.background='';
+    }, intrvl);
    }
 }
 
