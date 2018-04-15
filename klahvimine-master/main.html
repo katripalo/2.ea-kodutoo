@@ -21,23 +21,7 @@
 				  <input type="button" value="Show data" onclick="show()" />
 			</form>
 			<div id="display"></div>
-		
-		<script>
-			var names = [];
-			var nameInput = document.getElementById("name");
-			var messageBox  = document.getElementById("display");
 			
-			function insert ( ) {
-			 names.push( nameInput.value );
-			 clearAndShow();
-			}
-			
-			function clearAndShow () {
-			  nameInput.value = "";
-			  messageBox.innerHTML = "";
-			  messageBox.innerHTML += "Names: " + names.join(",") + "<br/>";
-			}	
-		</script>
 		<div class="footer">
 			<p>Töö autorid: Maritana Sampu, Katri Palo, Kaidi-Liis Liim</p>
 		</div>
