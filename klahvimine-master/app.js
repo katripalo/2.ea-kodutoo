@@ -31,6 +31,8 @@ TYPER.prototype = {
     this.canvas.width = this.WIDTH * 2
     this.canvas.height = this.HEIGHT * 2
 
+    this.mistakesMade = 0;
+
     this.loadWords()
   },
 
@@ -58,7 +60,7 @@ TYPER.prototype = {
     this.generateWord()
 	this.timeGenerated = new Date();
     this.word.Draw();
-	this.mistakesMade = 0;
+
 	this.score = 0;
 	
 	setInterval(updateDocument, 100, null, null, this.timeGenerated)
@@ -114,9 +116,8 @@ TYPER.prototype = {
 		this.average = Math.round(this.lettersPerMinute);
 		updateDocument(this.average, this.score, this.speed);
 		blinkit()
-		if(this.mistakesMade > 5){
+    if (this.mistakesMade >= 5) {
 			window.location.href = "scoreboard.html";
-
 		}
 
 	}
