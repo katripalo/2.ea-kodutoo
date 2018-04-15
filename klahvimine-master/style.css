@@ -64,12 +64,13 @@ form,
 	padding: 5px 10px;
 	border-radius: 5px;
 	border: 1px solid #B0C4DE;
+	box-sizing: border-box;
 }
 
 .footer {
 	position: fixed;
 	left: 0;
-	bottom: 70;
+	bottom: 70px;
 	width: 100%;
 	color: grey;
 	text-align: center;
