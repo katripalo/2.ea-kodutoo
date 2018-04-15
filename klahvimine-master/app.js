@@ -47,7 +47,7 @@ TYPER.prototype = {
         typer.words = structureArrayByWordLength(wordsFromFile)
 
         typer.start()
-		
+
       }
     }
 
@@ -56,14 +56,14 @@ TYPER.prototype = {
   },
 
   start: function () {
-	this.allGeneratedLetters = 0;
+    this.allGeneratedLetters = 0;
     this.generateWord()
-	this.timeGenerated = new Date();
+    this.timeGenerated = new Date();
     this.word.Draw();
 
-	this.score = 0;
-	
-	setInterval(updateDocument, 100, null, null, this.timeGenerated)
+    this.score = 0;
+
+    setInterval(updateDocument, 100, null, null, this.timeGenerated)
     window.addEventListener('keypress', this.keyPressed.bind(this))
   },
 
@@ -73,8 +73,8 @@ TYPER.prototype = {
     const wordFromArray = this.words[generatedWordLength][randomIndex]
 
     this.word = new Word(wordFromArray, this.canvas, this.ctx)
-	
-	
+
+
   },
 
   keyPressed: function (event) {
@@ -86,16 +86,16 @@ TYPER.prototype = {
       if (this.word.left.length === 0) {
         this.guessedWords += 1;
 
-		
-		this.timeGuessed = new Date();
-		this.wordLength = this.word.word.length;
-		this.allGeneratedLetters += this.wordLength;		
-		this.timeDiff = ((this.timeGuessed - this.timeGenerated) / 1000) / 60;
-		this.lettersPerMinute = this.allGeneratedLetters / this.timeDiff;
-		this.score = Math.round((this.lettersPerMinute) * this.timeDiff) * 10;
-		this.average = Math.round(this.lettersPerMinute);
 
-		updateDocument(this.average, this.score, this.speed)
+        this.timeGuessed = new Date();
+        this.wordLength = this.word.word.length;
+        this.allGeneratedLetters += this.wordLength;
+        this.timeDiff = ((this.timeGuessed - this.timeGenerated) / 1000) / 60;
+        this.lettersPerMinute = this.allGeneratedLetters / this.timeDiff;
+        this.score = Math.round((this.lettersPerMinute) * this.timeDiff) * 10;
+        this.average = Math.round(this.lettersPerMinute);
+
+        updateDocument(this.average, this.score, this.speed)
 
 
 
@@ -104,24 +104,23 @@ TYPER.prototype = {
       }
 
       this.word.Draw()
+    } else {
+
+      this.score += -20;
+      this.mistakesMade += 1;
+      this.allGeneratedLetters += this.wordLength;
+      this.timeGuessed = new Date();
+      this.timeDiff = ((this.timeGuessed - this.timeGenerated) / 1000) / 60;
+      this.lettersPerMinute = this.allGeneratedLetters / this.timeDiff;
+      this.average = Math.round(this.lettersPerMinute);
+      updateDocument(this.average, this.score, this.speed);
+      blinkit()
+      if (this.mistakesMade >= 5) {
+        window.location.href = "scoreboard.html";
+      }
+
     }
-	else {
 
-		this.score += - 20;
-		this.mistakesMade += 1;		
-		this.allGeneratedLetters += this.wordLength;
-		this.timeGuessed = new Date();
-		this.timeDiff = ((this.timeGuessed - this.timeGenerated) / 1000) / 60;
-		this.lettersPerMinute = this.allGeneratedLetters / this.timeDiff;
-		this.average = Math.round(this.lettersPerMinute);
-		updateDocument(this.average, this.score, this.speed);
-		blinkit()
-    if (this.mistakesMade >= 5) {
-			window.location.href = "scoreboard.html";
-		}
-
-	}
-	
   }
 }
 
@@ -152,12 +151,12 @@ Word.prototype = {
 }
 
 /* HELPERS */
-function structureArrayByWordLength (words) {
+function structureArrayByWordLength(words) {
   let tempArray = []
 
   for (let i = 0; i < words.length; i++) {
     const wordLength = words[i].length
-    if (tempArray[wordLength] === undefined)tempArray[wordLength] = []
+    if (tempArray[wordLength] === undefined) tempArray[wordLength] = []
 
     tempArray[wordLength].push(words[i])
   }
@@ -166,36 +165,40 @@ function structureArrayByWordLength (words) {
 }
 
 function updateDocument(average, score, timeGenerated) {
-	if(average){document.getElementById("average").innerHTML = "LETTERS PER MINUTE: " + '<br>' + average;}
-	if(score){document.getElementById("score").innerHTML = "SCORE: " + '<br>' + score;}
-	if(timeGenerated){
-		this.now = new Date();
-		this.timeDiff = Math.round((this.now - timeGenerated)/1000) ;
-		document.getElementById("timePassed").innerHTML = "TIME: " + '<br>' + this.timeDiff;
-	}
+  if (average) {
+    document.getElementById("average").innerHTML = "LETTERS PER MINUTE: " + '<br>' + average;
+  }
+  if (score) {
+    document.getElementById("score").innerHTML = "SCORE: " + '<br>' + score;
+  }
+  if (timeGenerated) {
+    this.now = new Date();
+    this.timeDiff = Math.round((this.now - timeGenerated) / 1000);
+    document.getElementById("timePassed").innerHTML = "TIME: " + '<br>' + this.timeDiff;
+  }
 }
 
-function blinkit(){
+function blinkit() {
   const body = document.getElementsByTagName("BODY")[0];
   let intrvl = 0;
 
-	for(nTimes=0;nTimes<1;nTimes++){
-		intrvl += 10;
-		setTimeout(function () {
-      body.style.background='black';
+  for (nTimes = 0; nTimes < 1; nTimes++) {
+    intrvl += 10;
+    setTimeout(function () {
+      body.style.background = 'black';
     }, intrvl);
 
-		intrvl += 100;
-		setTimeout(function () {
-      body.style.background='';
+    intrvl += 100;
+    setTimeout(function () {
+      body.style.background = '';
     }, intrvl);
-   }
+  }
 }
 
 
 
 window.onload = function () {
-    
+
   const typer = new TYPER()
   window.typer = typer
 
