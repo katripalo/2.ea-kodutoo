@@ -8,23 +8,27 @@
   <script src="scoreboard.js"></script>
 </head>
 
-<body>
-  <h1>
-    <p>GAME OVER</p>
-  </h1>
-  <h2>
-    <p>SCOREBOARD:</p>
-  </h2>
-
-  <table border="1" style="width:300px">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<body id="scoreboard">
+	<div class="myDiv">
+	  <h1>
+		<p>GAME OVER</p>
+	  </h1>
+	  <h2>
+		<p>SCOREBOARD:</p>
+	  </h2>
+	</div>
+	  <table id="results">
+		<thead>
+		  <tr>
+			<th>Name</th>
+			<th>Score</th>
+		  </tr>
+		</thead>
+		<tbody></tbody>
+	  </table> <br>
+	<div class="newGame">
+		<button id="myButton" onclick="location.href='index.html'">New Game!</button>
+	</div>
 
 </body>
 

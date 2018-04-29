@@ -8,7 +8,7 @@ window.onload = function () {
 
         if (nameInputValue !== '') {
             localStorage.setItem("name", nameInput.value);
-            document.location.href = "index.html";
+            document.location.href = "main.html";
         } else {
             nameInput.focus();
             nameInput.style.background = 'rgba(255, 0, 0, 0.5)';
