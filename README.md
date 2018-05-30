@@ -5,4 +5,4 @@ Katri Palo
 Kaidi-Liis Liim
 Maritana Sampu
 
-<img src="skoor.jpg" alt="skoor"/>
+<img src="skeem.jpg" alt="skeem"/>
